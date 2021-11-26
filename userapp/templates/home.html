@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block start %}
+ <section class="py-6">
+     <section class="mt-5 pt-5">
+    <a class="btn btn-primary" style="float:right; margin-right:20px; margin-top:20px;" href="{% url 'logout_user' %}">Logout</a>
+    <div class="container">
+        <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col">Address</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for data in profile %}
+        <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{data.username}}</td>
+            <td>{{data.email}}</td>
+            <td>{{data.address}}</td>
+            <td>
+                <a href="{% url 'prof_update' data.email %}" class="btn btn-success">Edit</a>
+                <a href="{% url 'prof_delete' data.email %}" class="btn btn-warning">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+
+
+
+          </tbody>
+          </table>
+
+    </div>
+</section>
+
+ </section>
+{% endblock %}

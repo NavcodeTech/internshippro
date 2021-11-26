@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block start %}
+
+<div class="container">
+    <form method="post" class="mt-5 pt-5 mb-5 pb-5" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-12">
+                <label>Username</label>
+                <input type="text" value="{{ prof_obj.username }}" class="form-control"  name="username">
+            </div>
+            <div class="col-md-12 mt-5">
+                <label>Address</label>
+                {{ form.media }}
+                {{ form.as_p }}
+            </div>
+            <div class="col-md-12">
+                <label>Email</label>
+                 <input type="email" value="{{ prof_obj.email }}" class="form-control"  name="email">
+            </div>
+        </div>
+        <button type = "submit" class="btn btn-primary mt-4"> Update Info</button>
+    </form>
+
+</div>
+
+{% endblock %}
